@@ -15,6 +15,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@fontsource/merriweather": "^5.0.8",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@portabletext/react": "3.0.11",

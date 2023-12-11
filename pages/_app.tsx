@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css'
+import '@fontsource/merriweather'
 
 import { AppProps } from 'next/app'
 import { lazy, Suspense } from 'react'

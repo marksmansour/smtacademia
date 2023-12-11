@@ -27,12 +27,12 @@ export default function HeroSection({ title, subtitle }) {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-2xl py-24 sm:py-32 lg:py-36 px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-100">{subtitle}</p>
+            <p className="mt-6 text-lg leading-8 text-gray-200">{subtitle}</p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="#"

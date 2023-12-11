@@ -6,6 +6,9 @@ module.exports = {
     './plugins/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Merriweather', 'serif'],
+    },
     extend: {
       colors: {
         'accent-1': '#FAFAFA',

@@ -12,10 +12,7 @@ export default function Page() {
     <Layout>
       <HeroSection
         title="Learning & Growing Academy"
-        subtitle="Discover what it takes to embody
-        contemplative wisdom in our daily lives
-        with this brand new podcast series from the
-        Center for Action and Contemplation"
+        subtitle="Duis laboris occaecat amet amet excepteur veniam. Cupidatat aliquip excepteur anim proident commodo officia mollit."
       />
       <AboutSection />
       <BlogSection />

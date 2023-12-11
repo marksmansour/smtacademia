@@ -56,8 +56,15 @@ export default function Footer() {
               Donate
             </Link>
           </div>
+          <div className="pb-6">
+            <Link
+              href="/donate"
+              className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+            >
+              Contact
+            </Link>
+          </div>
         </nav>
-
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; {new Date().getFullYear()} All rights reserved.{' '}
           <Link href="https://captivastudio.com" target="_blank">

@@ -82,19 +82,19 @@ export default function Navbar() {
               <div className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-white p-2 shadow-lg ring-1 ring-gray-900/5">
                 <Link
                   href="/blog"
-                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
+                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/events"
-                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
+                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
                   Events
                 </Link>
                 <Link
                   href="/resources"
-                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
+                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
                   Resources
                 </Link>
@@ -211,13 +211,17 @@ export default function Navbar() {
                       </div>
                     )}
                   </div>
-                </div>
-                <div className="py-6">
                   <Link
                     href="/donate"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Donate
+                  </Link>
+                  <Link
+                    href="/donate"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Contact
                   </Link>
                 </div>
               </div>
