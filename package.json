@@ -15,6 +15,8 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
     "@portabletext/react": "3.0.11",
     "@sanity/client": "6.9.3",
     "@sanity/image-url": "1.0.2",
