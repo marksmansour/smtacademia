@@ -8,8 +8,10 @@ export interface SharedPageProps {
   token: string
 }
 
-const PreviewProvider = lazy(() => import('components/PreviewProvider'))
-const VisualEditing = lazy(() => import('components/VisualEditing'))
+const PreviewProvider = lazy(
+  () => import('components/NextSanity/PreviewProvider'),
+)
+const VisualEditing = lazy(() => import('components/NextSanity/VisualEditing'))
 
 export default function App({
   Component,

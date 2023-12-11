@@ -1,5 +1,5 @@
-import IndexPage from 'components/IndexPage'
-import PreviewIndexPage from 'components/PreviewIndexPage'
+import IndexPage from 'components/NextSanity/IndexPage'
+import PreviewIndexPage from 'components/NextSanity/PreviewIndexPage'
 import { readToken } from 'lib/sanity.api'
 import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
