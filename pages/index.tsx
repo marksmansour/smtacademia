@@ -10,7 +10,13 @@ import Layout from 'components/Layout'
 export default function Page() {
   return (
     <Layout>
-      <HeroSection />
+      <HeroSection
+        title="Learning & Growing Academy"
+        subtitle="Discover what it takes to embody
+        contemplative wisdom in our daily lives
+        with this brand new podcast series from the
+        Center for Action and Contemplation"
+      />
       <AboutSection />
       <BlogSection />
       <EventSection />

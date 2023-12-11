@@ -19,15 +19,15 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Learning & Growing Academy"
-              width={75}
-              height={75}
+              width={64}
+              height={64}
             />
           </Link>
         </div>
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             <span className="sr-only">Open main menu</span>
@@ -47,7 +47,7 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-12 items-center">
           <Link href="/" className="text-sm font-semibold leading-6 text-white">
             Home
           </Link>
@@ -66,7 +66,7 @@ export default function Navbar() {
             >
               Programs
               <svg
-                className="h-5 w-5 flex-none text-gray-100"
+                className="h-5 w-5 flex-none text-white"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"
@@ -101,13 +101,17 @@ export default function Navbar() {
               </div>
             )}
           </div>
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/donate"
-            className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+            className="text-sm font-semibold leading-6 text-white"
           >
             Donate
+          </Link>
+          <Link
+            href="/contact"
+            className="text-sm font-semibold leading-6 text-white"
+          >
+            Contact
           </Link>
         </div>
       </nav>
@@ -121,8 +125,8 @@ export default function Navbar() {
                 <Image
                   src="/logo.png"
                   alt="Learning & Growing Academy"
-                  width={75}
-                  height={75}
+                  width={64}
+                  height={64}
                 />
               </Link>
               <button
