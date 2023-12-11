@@ -1,45 +1,22 @@
-import IndexPage from 'components/NextSanity/IndexPage'
-import PreviewIndexPage from 'components/NextSanity/PreviewIndexPage'
-import { readToken } from 'lib/sanity.api'
-import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
-import { Post, Settings } from 'lib/sanity.queries'
-import { GetStaticProps } from 'next'
-import type { SharedPageProps } from 'pages/_app'
+import AboutSection from 'components/Home/AboutSection'
+import BlogSection from 'components/Home/BlogSection'
+import ContactSection from 'components/Home/ContactSection'
+import CtaSection from 'components/Home/CtaSection'
+import DonateSection from 'components/Home/DonateSection'
+import EventSection from 'components/Home/EventSection'
+import HeroSection from 'components/Home/HeroSection'
+import Layout from 'components/Layout'
 
-interface PageProps extends SharedPageProps {
-  posts: Post[]
-  settings: Settings
-}
-
-interface Query {
-  [key: string]: string
-}
-
-export default function Page(props: PageProps) {
-  const { posts, settings, draftMode } = props
-
-  if (draftMode) {
-    return <PreviewIndexPage posts={posts} settings={settings} />
-  }
-
-  return <IndexPage posts={posts} settings={settings} />
-}
-
-export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
-  const { draftMode = false } = ctx
-  const client = getClient(draftMode ? { token: readToken } : undefined)
-
-  const [settings, posts = []] = await Promise.all([
-    getSettings(client),
-    getAllPosts(client),
-  ])
-
-  return {
-    props: {
-      posts,
-      settings,
-      draftMode,
-      token: draftMode ? readToken : '',
-    },
-  }
+export default function Page() {
+  return (
+    <Layout>
+      <HeroSection />
+      <AboutSection />
+      <BlogSection />
+      <EventSection />
+      <CtaSection />
+      <ContactSection />
+      <DonateSection />
+    </Layout>
+  )
 }
