@@ -9,6 +9,7 @@ export default defineType({
   title: 'Event',
   icon: CalendarIcon,
   type: 'document',
+  liveEdit: true,
   fields: [
     defineField({
       name: 'title',

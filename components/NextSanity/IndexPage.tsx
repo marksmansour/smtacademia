@@ -27,9 +27,10 @@ export default function IndexPage(props: IndexPageProps) {
         <HeroSection title={title} description={description} />
         <AboutSection />
         <BlogSection posts={posts} />
-        <EventSection />
         <CtaSection />
+        <EventSection />
         <ContactSection />
+        <CtaSection />
         <DonateSection />
       </Layout>
     </>

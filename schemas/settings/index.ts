@@ -11,7 +11,7 @@ export default defineType({
   icon: CogIcon,
   preview: { select: { title: 'title', subtitle: 'description' } },
   // Uncomment below to have edits publish automatically as you type
-  // liveEdit: true,
+  liveEdit: true,
   fields: [
     defineField({
       name: 'title',
@@ -54,6 +54,50 @@ export default defineType({
         }),
       ],
       validation: (rule) => rule.max(155).required(),
+    }),
+    defineField({
+      name: 'excerpt',
+      description:
+        'A short description about the website to be used on the home page.',
+      title: 'Excerpt',
+      type: 'array',
+      initialValue: demo.description,
+      of: [
+        defineArrayMember({
+          type: 'block',
+        }),
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'about',
+      description: 'About page content.',
+      title: 'About',
+      type: 'array',
+      of: [
+        { type: 'block' },
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Image caption',
+              description: 'Caption displayed below the image.',
+            },
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+              description: 'Important for SEO and accessiblity.',
+            },
+          ],
+        },
+      ],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'ogImage',
