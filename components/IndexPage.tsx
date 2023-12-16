@@ -28,7 +28,7 @@ export default function IndexPage(props: IndexPageProps) {
         <AboutSection excerpt={excerpt} />
         <BlogSection posts={posts} />
         <CtaSection />
-        <EventSection />
+        <EventSection events={[]} />
         <ContactSection />
         <CtaSection />
         <DonateSection />

@@ -19,6 +19,7 @@ import {
   resourceQuery,
   type Settings,
   settingsQuery,
+  eventsQuery,
 } from 'lib/sanity.queries'
 import { createClient, type SanityClient } from 'next-sanity'
 
@@ -77,7 +78,7 @@ export async function getPostAndMoreStories(
 }
 
 export async function getAllEvents(client: SanityClient): Promise<Event[]> {
-  return (await client.fetch(eventQuery)) || []
+  return (await client.fetch(eventsQuery)) || []
 }
 
 export async function getAllEventSlugs(): Promise<Pick<Event, 'slug'>[]> {

@@ -1,3 +1,5 @@
+import { Event } from 'lib/sanity.queries'
+
 const posts = [
   {
     id: 1,
@@ -16,10 +18,19 @@ const posts = [
         'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
   },
-  // More posts...
+  // More events...
 ]
 
-export default function EventSection() {
+export default function EventSection({
+  events,
+  limit = 3,
+}: {
+  events: Event[]
+  limit?: number
+}) {
+  if (limit > 0) {
+    events = events.slice(0, limit)
+  }
   return (
     <div className="bg-white my-24 sm:my-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

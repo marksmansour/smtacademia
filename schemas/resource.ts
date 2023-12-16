@@ -17,7 +17,6 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'text',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'file',
