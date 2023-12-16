@@ -5,6 +5,9 @@ export default function Page() {
   return (
     <Layout>
       <PageHeader title="Donate" />
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20">
+        https://www.funraise.org/
+      </div>
     </Layout>
   )
 }
