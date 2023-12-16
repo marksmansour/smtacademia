@@ -1,7 +1,8 @@
+import { PortableText } from '@portabletext/react'
 import Navbar from 'components/Navbar'
 import Image from 'next/image'
 
-export default function HeroSection({ title, subtitle }) {
+export default function HeroSection({ title, description }) {
   return (
     <div className="bg-teal-900">
       <header className="absolute inset-x-0 top-0 z-50">
@@ -32,7 +33,9 @@ export default function HeroSection({ title, subtitle }) {
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-200">{subtitle}</p>
+            <h4 className="mt-6 text-lg leading-8 text-gray-200">
+              <PortableText value={description} />
+            </h4>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="#"

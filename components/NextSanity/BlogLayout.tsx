@@ -1,3 +1,4 @@
+import Footer from 'components/Footer'
 import AlertBanner from 'components/NextSanity/AlertBanner'
 
 export default function BlogLayout({
@@ -14,6 +15,7 @@ export default function BlogLayout({
       <div className="min-h-screen">
         <AlertBanner preview={preview} loading={loading} />
         <main>{children}</main>
+        <Footer />
       </div>
     </>
   )

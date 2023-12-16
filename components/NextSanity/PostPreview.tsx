@@ -13,8 +13,8 @@ export default function PostPreview({
   slug,
 }: Omit<Post, '_id'>) {
   return (
-    <div>
-      <div className="mb-5">
+    <article className="flex flex-col items-start justify-between">
+      <div className="w-full">
         <CoverImage
           slug={slug}
           title={title}
@@ -22,16 +22,27 @@ export default function PostPreview({
           priority={false}
         />
       </div>
-      <h3 className="mb-3 text-3xl leading-snug">
-        <Link href={`/posts/${slug}`} className="hover:underline">
-          {title}
-        </Link>
-      </h3>
-      <div className="mb-4 text-lg">
-        <Date dateString={date} />
+      <div className="max-w-xl">
+        <div className="mt-8 flex items-center gap-x-4 text-xs">
+          <Date dateString={date} />
+        </div>
+        <div className="group relative">
+          <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            <Link href={`/posts/${slug}`}>
+              <span className="absolute inset-0" />
+              {title}
+            </Link>
+          </h3>
+          {excerpt && (
+            <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+              {excerpt}
+            </p>
+          )}
+        </div>
+        <div className="relative mt-8 flex items-center gap-x-4">
+          {author && <Avatar name={author.name} picture={author.picture} />}
+        </div>
       </div>
-      {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
-      {author && <Avatar name={author.name} picture={author.picture} />}
-    </div>
+    </article>
   )
 }
