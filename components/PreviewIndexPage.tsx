@@ -1,4 +1,4 @@
-import IndexPage, { type IndexPageProps } from 'components/NextSanity/IndexPage'
+import IndexPage, { type IndexPageProps } from 'components/IndexPage'
 import {
   postsQuery,
   type Post,

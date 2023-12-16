@@ -1,6 +1,6 @@
 import Navbar from 'components/Navbar'
 import Image from 'next/image'
-import AuthorAvatar from './NextSanity/AuthorAvatar'
+import AuthorAvatar from './AuthorAvatar'
 import type { Post } from 'lib/sanity.queries'
 import { urlForImage } from 'lib/sanity.image'
 

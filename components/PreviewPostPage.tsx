@@ -1,4 +1,4 @@
-import PostPage, { PostPageProps } from 'components/NextSanity/PostPage'
+import PostPage, { PostPageProps } from 'components/PostPage'
 import {
   type Post,
   postAndMoreStoriesQuery,

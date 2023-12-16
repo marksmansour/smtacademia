@@ -1,5 +1,5 @@
 import Footer from 'components/Footer'
-import AlertBanner from 'components/NextSanity/AlertBanner'
+import AlertBanner from 'components/AlertBanner'
 
 export default function BlogLayout({
   preview,

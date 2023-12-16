@@ -1,4 +1,4 @@
-import PostPreview from 'components/NextSanity/PostPreview'
+import PostPreview from 'components/PostPreview'
 import type { Post } from 'lib/sanity.queries'
 
 export default function BlogSection({ posts }: { posts: Post[] }) {
