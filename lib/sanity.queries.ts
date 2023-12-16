@@ -94,7 +94,9 @@ export interface Post {
 
 export interface Settings {
   title?: string
-  description?: any[]
+  description?: any[],
+  excerpt?: any,
+  about?: any,
   ogImage?: {
     title?: string
   }

@@ -46,11 +46,7 @@ export default function PostPage(props: PostPageProps) {
           {preview && !post ? (
             <PostTitle>Loading…</PostTitle>
           ) : (
-            <>
-              <article className="my-24 sm:my-32">
-                <PostBody content={post.content} />
-              </article>
-            </>
+            <PostBody content={post.content} />
           )}
         </Container>
         {morePosts?.length > 0 && (
