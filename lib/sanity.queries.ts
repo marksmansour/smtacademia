@@ -49,7 +49,6 @@ const eventFields = groq`
   location,
   url,
   repeat,
-  category,
   "slug": slug.current,
   status
 `
@@ -74,6 +73,19 @@ export const eventBySlugQuery = groq`
   ${eventFields}
 }
 `
+
+const resourceFields = groq`
+  _id,
+  name,
+  description,
+  "file": file.asset->url,
+  url
+`
+
+export const resourceQuery = groq`
+*[_type == "resource"] | order(date desc) {
+  ${resourceFields}
+}`
 
 export interface Author {
   name?: string
@@ -112,5 +124,12 @@ export interface Event {
   location?: string
   url?: string
   repeat?: string
-  category?: string
+}
+
+export interface Resource {
+  _id: string
+  name?: string
+  description?: string
+  file?: string
+  url?: string
 }

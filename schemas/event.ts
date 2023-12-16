@@ -70,11 +70,6 @@ export default defineType({
         layout: 'radio',
       },
     }),
-    defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'string',
-    }),
   ],
   preview: {
     select: {

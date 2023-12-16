@@ -15,6 +15,8 @@ import {
   postBySlugQuery,
   postSlugsQuery,
   postsQuery,
+  type Resource,
+  resourceQuery,
   type Settings,
   settingsQuery,
 } from 'lib/sanity.queries'
@@ -89,4 +91,10 @@ export async function getEventBySlug(
   slug: string,
 ): Promise<Event> {
   return (await client.fetch(eventBySlugQuery, { slug })) || ({} as any)
+}
+
+export async function getAllResources(
+  client: SanityClient,
+): Promise<Resource[]> {
+  return (await client.fetch(resourceQuery)) || []
 }
