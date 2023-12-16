@@ -7,9 +7,12 @@ import PostHeader from 'components/NextSanity/PostHeader'
 import PostPageHead from 'components/NextSanity/PostPageHead'
 import PostTitle from 'components/NextSanity/PostTitle'
 import SectionSeparator from 'components/NextSanity/SectionSeparator'
+import PageHeader from 'components/PageHeader'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import { notFound } from 'next/navigation'
+import AuthorAvatar from './AuthorAvatar'
+import BlogSection from 'components/Home/BlogSection'
 
 export interface PostPageProps {
   preview?: boolean
@@ -23,7 +26,6 @@ const NO_POSTS: Post[] = []
 
 export default function PostPage(props: PostPageProps) {
   const { preview, loading, morePosts = NO_POSTS, post, settings } = props
-  const { title = demo.title } = settings || {}
 
   const slug = post?.slug
 
@@ -34,28 +36,29 @@ export default function PostPage(props: PostPageProps) {
   return (
     <>
       <PostPageHead settings={settings} post={post} />
-
       <Layout preview={preview} loading={loading}>
+        <PageHeader
+          title={post.title}
+          coverImage={post.coverImage}
+          date={post.date}
+        />
         <Container>
-          <BlogHeader title={title} level={2} />
           {preview && !post ? (
             <PostTitle>Loading…</PostTitle>
           ) : (
             <>
-              <article>
-                <PostHeader
-                  title={post.title}
-                  coverImage={post.coverImage}
-                  date={post.date}
-                  author={post.author}
-                />
+              <article className="my-24 sm:my-32">
                 <PostBody content={post.content} />
               </article>
-              <SectionSeparator />
-              {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
             </>
           )}
         </Container>
+        {morePosts?.length > 0 && (
+          <Container>
+            <SectionSeparator />
+            <BlogSection posts={morePosts} />
+          </Container>
+        )}
       </Layout>
     </>
   )

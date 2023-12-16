@@ -1,12 +1,29 @@
 import Navbar from 'components/Navbar'
+import Image from 'next/image'
+import AuthorAvatar from './NextSanity/AuthorAvatar'
+import type { Post } from 'lib/sanity.queries'
+import { urlForImage } from 'lib/sanity.image'
 
-export default function PageHeader({ title }) {
+export default function PageHeader(
+  props: Pick<Post, 'title' | 'coverImage' | 'date' | 'slug'>,
+) {
+  const { title, coverImage, date, slug } = props
+
   return (
     <div className="bg-teal-900">
       <header className="absolute inset-x-0 top-0 z-50">
         <Navbar />
       </header>
       <div className="relative isolate overflow-hidden pt-14">
+        {coverImage && (
+          <Image
+            src={urlForImage(coverImage).height(1080).width(1920).url()}
+            alt="Learning & Growing Academy"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
+        )}
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"

@@ -2,6 +2,7 @@ import { CalendarIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 import authorType from './author'
+import { format, parseISO } from 'date-fns'
 
 export default defineType({
   name: 'event',
@@ -32,12 +33,12 @@ export default defineType({
       type: 'text',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: [{ type: authorType.name }],
-    }),
+    // defineField({
+    //   name: 'author',
+    //   title: 'Author',
+    //   type: 'reference',
+    //   to: [{ type: authorType.name }],
+    // }),
     defineField({
       name: 'date',
       title: 'Date and Time',
@@ -82,8 +83,12 @@ export default defineType({
       media: 'image',
     },
     prepare({ title, media, author, date }) {
-      const subtitle = author ? `by ${author}` : ''
-      return { title, media, subtitle: `${subtitle}, on ${date}` }
+      const subtitles = [
+        author && `by ${author}`,
+        date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
+      ].filter(Boolean)
+
+      return { title, media, subtitle: subtitles.join(' ') }
     },
   },
 })
