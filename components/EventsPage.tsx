@@ -16,7 +16,7 @@ export default function EventsPage(props: EventsPageProps) {
     <>
       <Layout preview={preview} loading={loading}>
         <PageHeader title="Events" />
-        <EventSection events={events} />
+        <EventSection events={events} limit={0} />
       </Layout>
     </>
   )

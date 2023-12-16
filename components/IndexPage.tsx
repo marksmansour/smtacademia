@@ -7,17 +7,18 @@ import EventSection from 'components/EventSection'
 import HeroSection from 'components/HeroSection'
 import Layout from 'components/Layout'
 import IndexPageHead from 'components/IndexPageHead'
-import type { Post, Settings } from 'lib/sanity.queries'
+import type { Event, Post, Settings } from 'lib/sanity.queries'
 
 export interface IndexPageProps {
   preview?: boolean
   loading?: boolean
   posts: Post[]
+  events: Event[]
   settings: Settings
 }
 
 export default function IndexPage(props: IndexPageProps) {
-  const { preview, loading, posts, settings } = props
+  const { preview, loading, posts, events, settings } = props
   const { title, description, excerpt } = settings
 
   return (
@@ -28,7 +29,7 @@ export default function IndexPage(props: IndexPageProps) {
         <AboutSection excerpt={excerpt} />
         <BlogSection posts={posts} />
         <CtaSection />
-        <EventSection events={[]} />
+        <EventSection events={events} />
         <ContactSection />
         <CtaSection />
         <DonateSection />
