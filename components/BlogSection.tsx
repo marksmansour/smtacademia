@@ -1,7 +1,17 @@
 import PostPreview from 'components/PostPreview'
 import type { Post } from 'lib/sanity.queries'
 
-export default function BlogSection({ posts }: { posts: Post[] }) {
+export default function BlogSection({
+  posts,
+  limit = 3,
+}: {
+  posts: Post[]
+  limit?: number
+}) {
+  if (limit > 0) {
+    posts = posts.slice(0, limit)
+  }
+
   return (
     <div className="bg-white my-24 sm:my-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

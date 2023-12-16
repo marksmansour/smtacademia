@@ -5,7 +5,7 @@ import CtaSection from 'components/CtaSection'
 
 export default function Page() {
   return (
-    <Layout>
+    <Layout preview={false}>
       <PageHeader title="Contact" />
       <ContactForm />
       <CtaSection />

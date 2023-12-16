@@ -1,4 +1,4 @@
-import Layout from 'components/BlogLayout'
+import Layout from 'components/Layout'
 import type { Settings } from 'lib/sanity.queries'
 import PageHeader from './PageHeader'
 import PostBody from './PostBody'
