@@ -13,7 +13,7 @@ const postFields = groq`
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
 
-export const indexQuery = groq`
+export const postsQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
@@ -40,6 +40,41 @@ export const postBySlugQuery = groq`
 }
 `
 
+const eventFields = groq`
+  _id,
+  title,
+  description,
+  "author": author->{name, picture},
+  date,
+  location,
+  url,
+  repeat,
+  category,
+  "slug": slug.current,
+  status
+`
+
+export const eventsQuery = groq`
+*[_type == "event"] | order(date desc) {
+  ${eventFields}
+}`
+
+export const eventQuery = groq`
+*[_type == "event" &&  slug.current == $slug] | order(date desc) [0] {
+  content,
+  ${eventFields}
+}`
+
+export const eventSlugsQuery = groq`
+*[_type == "event" && defined(slug.current)][].slug.current
+`
+
+export const eventBySlugQuery = groq`
+*[_type == "event" && slug.current == $slug][0] {
+  ${eventFields}
+}
+`
+
 export interface Author {
   name?: string
   picture?: any
@@ -63,4 +98,17 @@ export interface Settings {
   ogImage?: {
     title?: string
   }
+}
+
+export interface Event {
+  _id: string
+  title?: string
+  slug?: string
+  description?: string
+  author?: Author
+  date?: string
+  location?: string
+  url?: string
+  repeat?: string
+  category?: string
 }

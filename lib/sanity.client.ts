@@ -6,11 +6,15 @@ import {
   useCdn,
 } from 'lib/sanity.api'
 import {
-  indexQuery,
+  type Event,
+  eventBySlugQuery,
+  eventQuery,
+  eventSlugsQuery,
   type Post,
   postAndMoreStoriesQuery,
   postBySlugQuery,
   postSlugsQuery,
+  postsQuery,
   type Settings,
   settingsQuery,
 } from 'lib/sanity.queries'
@@ -47,7 +51,7 @@ export async function getSettings(client: SanityClient): Promise<Settings> {
 }
 
 export async function getAllPosts(client: SanityClient): Promise<Post[]> {
-  return (await client.fetch(indexQuery)) || []
+  return (await client.fetch(postsQuery)) || []
 }
 
 export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
@@ -68,4 +72,21 @@ export async function getPostAndMoreStories(
   slug: string,
 ): Promise<{ post: Post; morePosts: Post[] }> {
   return await client.fetch(postAndMoreStoriesQuery, { slug })
+}
+
+export async function getAllEvents(client: SanityClient): Promise<Event[]> {
+  return (await client.fetch(eventQuery)) || []
+}
+
+export async function getAllEventSlugs(): Promise<Pick<Event, 'slug'>[]> {
+  const client = getClient()
+  const slugs = (await client.fetch<string[]>(eventSlugsQuery)) || []
+  return slugs.map((slug) => ({ slug }))
+}
+
+export async function getEventBySlug(
+  client: SanityClient,
+  slug: string,
+): Promise<Event> {
+  return (await client.fetch(eventBySlugQuery, { slug })) || ({} as any)
 }

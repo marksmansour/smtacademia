@@ -8,13 +8,6 @@ export default function PageHeader({ title }) {
         <Navbar />
       </header>
       <div className="relative isolate overflow-hidden pt-14">
-        <Image
-          src="/hero.jpg"
-          alt="Learning & Growing Academy"
-          width={1920}
-          height={1080}
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-        />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"

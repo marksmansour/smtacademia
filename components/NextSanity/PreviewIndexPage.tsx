@@ -1,6 +1,6 @@
 import IndexPage, { type IndexPageProps } from 'components/NextSanity/IndexPage'
 import {
-  indexQuery,
+  postsQuery,
   type Post,
   type Settings,
   settingsQuery,
@@ -8,7 +8,7 @@ import {
 import { useLiveQuery } from 'next-sanity/preview'
 
 export default function PreviewIndexPage(props: IndexPageProps) {
-  const [posts, loadingPosts] = useLiveQuery<Post[]>(props.posts, indexQuery)
+  const [posts, loadingPosts] = useLiveQuery<Post[]>(props.posts, postsQuery)
   const [settings, loadingSettings] = useLiveQuery<Settings>(
     props.settings,
     settingsQuery,
