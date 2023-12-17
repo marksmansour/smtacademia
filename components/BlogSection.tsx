@@ -18,7 +18,7 @@ export default function BlogSection({
   }
 
   return (
-    <div className="my-24 sm:my-32">
+    <div className="my-16 sm:my-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {title && <SectionHeader title={title} subtitle={subtitle} />}
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">

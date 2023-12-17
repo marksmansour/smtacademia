@@ -8,9 +8,10 @@ export default function Navbar() {
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false)
 
   return (
-    <div className="bg-stone-100">
+    <div className="bg-stone-50">
+      <div className="bg-sky-900 w-full h-4" />
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between py-4 px-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between py-6 px-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -47,7 +48,7 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12 items-center">
+        <div className="hidden lg:flex lg:gap-x-6 items-center">
           <Link
             href="/"
             className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"

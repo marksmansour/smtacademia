@@ -5,14 +5,23 @@ export default function HeroSection({ title, description }) {
   return (
     <div className="bg-sky-900">
       <div className="relative isolate overflow-hidden pt-14">
-        <Image
-          src="/hero.jpg"
-          alt="Learning & Growing Academy"
-          width={1920}
-          height={1080}
+        <video
+          src="/hero.mp4"
+          autoPlay
+          muted
+          loop
           className="absolute inset-0 -z-10 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-900 to-sky-500 mix-blend-multiply -z-10 opacity-80" />
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          <Image
+            src="/hero.jpg"
+            alt="Learning & Growing Academy"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
+        </video>
+        <div className="absolute inset-0 bg-stone-900 -z-10 opacity-40" />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -25,12 +34,12 @@ export default function HeroSection({ title, description }) {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-24 sm:py-32 lg:py-36 px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl py-28 sm:py-36 lg:py-40 px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl shadow-md">
               {title}
             </h1>
-            <h4 className="mt-6 text-lg leading-8 text-gray-200">
+            <h4 className="mt-6 text-lg leading-8 text-gray-100 shadow-sm">
               <PortableText value={description} />
             </h4>
           </div>

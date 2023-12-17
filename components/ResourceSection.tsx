@@ -13,7 +13,7 @@ export default function ResourceSection({
   }
 
   return (
-    <div className="my-24 sm:my-32">
+    <div className="my-16 sm:my-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="mt-10 space-y-16">

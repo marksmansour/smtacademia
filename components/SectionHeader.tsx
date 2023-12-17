@@ -12,10 +12,10 @@ export default function SectionHeader({
           {subtitle}
         </p>
       )}
-      <h2 className="mt-2 font-bold tracking-tight text-gray-900 text-2xl sm:text-4xl">
+      <h2 className="mt-2 font-bold tracking-tight text-gray-900 text-2xl sm:text-3xl">
         {title}
       </h2>
-      <div className="mt-8 h-1 w-20 bg-sky-600 rounded-full mx-auto" />
+      <div className="mt-4 h-1 w-16 bg-sky-600 rounded-full mx-auto" />
     </div>
   )
 }

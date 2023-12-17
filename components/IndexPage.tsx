@@ -26,11 +26,11 @@ export default function IndexPage(props: IndexPageProps) {
       <IndexPageHead settings={settings} />
       <Layout preview={preview} loading={loading}>
         <HeroSection title={title} description={description} />
-        <AboutSection excerpt={excerpt} />
-        <BlogSection posts={posts} title="From The Blog" />
+        <BlogSection posts={posts} title="Featured Posts" />
         <CtaSection />
-        <EventSection events={events} title="Our Latest Events" />
+        <AboutSection excerpt={excerpt} />
         <DonateSection />
+        <EventSection events={events} title="Our Latest Events" />
       </Layout>
     </>
   )
