@@ -12,6 +12,7 @@ export default function HeroSection({ title, description }) {
           height={1080}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-900 to-sky-500 mix-blend-multiply -z-10 opacity-80" />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"

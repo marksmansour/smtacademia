@@ -1,12 +1,17 @@
 import { Event } from 'lib/sanity.queries'
 import EventPreview from './EventPreview'
+import SectionHeader from './SectionHeader'
 
 export default function EventSection({
   events,
   limit = 3,
+  title,
+  subtitle,
 }: {
   events: Event[]
   limit?: number
+  title?: string
+  subtitle?: string
 }) {
   if (limit > 0) {
     events = events.slice(0, limit)
@@ -14,6 +19,7 @@ export default function EventSection({
   return (
     <div className="my-24 sm:my-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {title && <SectionHeader title={title} subtitle={subtitle} />}
         <div className="mx-auto max-w-2xl">
           <div className="mt-10 space-y-16">
             {events.map((e) => (

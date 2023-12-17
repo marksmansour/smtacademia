@@ -14,9 +14,11 @@ export default function Layout({
   return (
     <>
       <AlertBanner preview={preview} loading={loading} />
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </div>
     </>
   )
 }

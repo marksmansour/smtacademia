@@ -11,7 +11,7 @@ export default function PageHeader(
 
   return (
     <div className="bg-sky-900">
-      <div className="relative isolate overflow-hidden pt-14">
+      <div className="relative isolate overflow-hidden">
         {coverImage && (
           <Image
             src={urlForImage(coverImage).height(1080).width(1920).url()}

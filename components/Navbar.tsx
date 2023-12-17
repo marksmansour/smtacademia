@@ -8,7 +8,7 @@ export default function Navbar() {
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false)
 
   return (
-    <>
+    <div className="bg-stone-100">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-6 lg:px-8"
         aria-label="Global"
@@ -82,22 +82,22 @@ export default function Navbar() {
               </svg>
             </button>
             {programsOpen && (
-              <div className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-white p-2 shadow-lg ring-1 ring-gray-900/5">
+              <div className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-stone-50 p-2 shadow-lg ring-1 ring-gray-900/5">
                 <Link
                   href="/blog"
-                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/events"
-                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
                   Events
                 </Link>
                 <Link
                   href="/resources"
-                  className="block rounded-lg px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
                   Resources
                 </Link>
@@ -121,7 +121,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden" role="dialog" aria-modal="true">
           <div className="fixed inset-0 z-10"></div>
-          <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-stone-50 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-end">
               <button
                 type="button"
@@ -150,20 +150,20 @@ export default function Navbar() {
                 <div className="space-y-2 py-6">
                   <Link
                     href="/"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Home
                   </Link>
                   <Link
                     href="/about"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     About
                   </Link>
                   <div className="-mx-3">
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      className="flex w-full items-center justify-between rounded-md py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       aria-controls="disclosure-2"
                       aria-expanded="false"
                       onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
@@ -186,19 +186,19 @@ export default function Navbar() {
                       <div className="mt-2 space-y-2" id="disclosure-2">
                         <Link
                           href="/blog"
-                          className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
                           Blog
                         </Link>
                         <Link
                           href="/events"
-                          className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
                           Events
                         </Link>
                         <Link
                           href="/resources"
-                          className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
                           Resources
                         </Link>
@@ -207,13 +207,13 @@ export default function Navbar() {
                   </div>
                   <Link
                     href="/donate"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Donate
                   </Link>
                   <Link
                     href="/donate"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Contact
                   </Link>
@@ -223,6 +223,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }

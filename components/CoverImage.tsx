@@ -14,12 +14,12 @@ export default function CoverImage(props: CoverImageProps) {
   const { title, slug, image: source, priority } = props
   const image = source?.asset?._ref ? (
     <div
-      className={cn('rounded-2xl', {
+      className={cn('rounded-md', {
         'transition-shadow duration-200': slug,
       })}
     >
       <Image
-        className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+        className="aspect-[16/9] w-full rounded-md bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
         width={2000}
         height={1000}
         alt=""
