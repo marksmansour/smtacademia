@@ -48,19 +48,22 @@ export default function Navbar() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12 items-center">
-          <Link href="/" className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-3 p-2">
+          <Link
+            href="/"
+            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
+          >
             Home
           </Link>
           <Link
             href="/about"
-            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-3 p-2"
+            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
           >
             About
           </Link>
           <div className="relative">
             <button
               type="button"
-              className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-black hover:underline underline-offset-3 p-2"
+              className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
               aria-expanded={programsOpen}
               onClick={() => setProgramsOpen(!programsOpen)}
             >
@@ -103,13 +106,13 @@ export default function Navbar() {
           </div>
           <Link
             href="/donate"
-            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-3 p-2"
+            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
           >
             Donate
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-3 p-2"
+            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
           >
             Contact
           </Link>
