@@ -67,7 +67,7 @@ export default async function revalidate(
   }
 }
 
-type StaleRoute = '/' | `/blog/${string}`
+type StaleRoute = '/' | `/blog/${string}` | `/events/${string}`
 
 async function queryStaleRoutes(
   body: Pick<
@@ -105,6 +105,8 @@ async function queryStaleRoutes(
       return await queryStaleAuthorRoutes(client, body._id)
     case 'post':
       return await queryStalePostRoutes(client, body._id)
+    case 'event':
+      return await queryStaleEventRoutes(client, body._id)
     case 'settings':
       return await queryAllRoutes(client)
     default:
@@ -168,4 +170,16 @@ async function queryStalePostRoutes(
   slugs = await mergeWithMoreStories(client, slugs)
 
   return ['/', ...slugs.map((slug) => `/blog/${slug}`)]
+}
+
+async function queryStaleEventRoutes(
+  client: SanityClient,
+  id: string,
+): Promise<StaleRoute[]> {
+  let slugs = await client.fetch(
+    groq`*[_type == "event" && _id == $id].slug.current`,
+    { id },
+  )
+
+  return ['/', ...slugs.map((slug) => `/events/${slug}`)]
 }
