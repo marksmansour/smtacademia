@@ -82,7 +82,7 @@ const resourceFields = groq`
   url
 `
 
-export const resourceQuery = groq`
+export const resourcesQuery = groq`
 *[_type == "resource"] | order(date desc) {
   ${resourceFields}
 }`
