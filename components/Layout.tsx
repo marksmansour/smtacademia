@@ -1,5 +1,6 @@
 import Footer from 'components/Footer'
 import AlertBanner from 'components/AlertBanner'
+import Navbar from './Navbar'
 
 export default function Layout({
   preview,
@@ -13,10 +14,9 @@ export default function Layout({
   return (
     <>
       <AlertBanner preview={preview} loading={loading} />
-      <div className="min-h-screen">
-        <main>{children}</main>
-        <Footer />
-      </div>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
     </>
   )
 }

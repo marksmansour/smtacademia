@@ -12,7 +12,7 @@ export default function EventSection({
     events = events.slice(0, limit)
   }
   return (
-    <div className="bg-white my-24 sm:my-32">
+    <div className="my-24 sm:my-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="mt-10 space-y-16">

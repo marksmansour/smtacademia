@@ -1,13 +1,9 @@
 import { PortableText } from '@portabletext/react'
-import Navbar from 'components/Navbar'
 import Image from 'next/image'
 
 export default function HeroSection({ title, description }) {
   return (
     <div className="bg-teal-900">
-      <header className="absolute inset-x-0 top-0 z-50">
-        <Navbar />
-      </header>
       <div className="relative isolate overflow-hidden pt-14">
         <Image
           src="/hero.jpg"

@@ -11,9 +11,6 @@ export default function PageHeader(
 
   return (
     <div className="bg-teal-900">
-      <header className="absolute inset-x-0 top-0 z-50">
-        <Navbar />
-      </header>
       <div className="relative isolate overflow-hidden pt-14">
         {coverImage && (
           <Image
