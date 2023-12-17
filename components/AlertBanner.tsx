@@ -23,7 +23,7 @@ export default function Alert({
     <div
       className={`${
         loading ? 'animate-pulse' : ''
-      } border-b border-accent-7 bg-accent-7 text-white absolute bottom-0 left-0 right-0 z-50`}
+      } border-b border-accent-7 bg-accent-7 text-white fixed bottom-0 left-0 right-0 z-50`}
     >
       <Container>
         <div className="py-2 text-center text-sm">
