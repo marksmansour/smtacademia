@@ -24,10 +24,10 @@ export default function HeroSection({ title, description }) {
         <div className="absolute inset-0 bg-stone-900 -z-10 opacity-40" />
         <div className="mx-auto max-w-2xl py-28 sm:py-36 lg:py-40 px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl shadow-md">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
             </h1>
-            <h4 className="mt-6 text-lg leading-8 text-gray-100 shadow-sm">
+            <h4 className="mt-6 text-lg leading-8 text-gray-50">
               <PortableText value={description} />
             </h4>
           </div>

@@ -14,10 +14,10 @@ export default function ContactForm() {
       <form
         action="#"
         method="POST"
-        className="mx-auto my-16 max-w-xl sm:my-20"
+        className="mx-auto my-16 max-w-4xl sm:my-20"
       >
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div className="sm:col-span-2">
+          <div>
             <label
               htmlFor="first-name"
               className="block text-sm font-semibold leading-6 text-gray-900"
@@ -35,7 +35,7 @@ export default function ContactForm() {
               />
             </div>
           </div>
-          <div className="sm:col-span-2">
+          <div>
             <label
               htmlFor="email"
               className="block text-sm font-semibold leading-6 text-gray-900"
