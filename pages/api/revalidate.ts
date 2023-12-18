@@ -113,6 +113,8 @@ async function queryStaleRoutes(
       return await queryStalePostRoutes(client, body._id)
     case 'event':
       return await queryStaleEventRoutes(client, body._id)
+    case 'resource':
+      return await queryStaleResourceRoutes(client, body._id)
     case 'settings':
       return await queryAllRoutes(client)
     default:
@@ -127,7 +129,13 @@ async function _queryAllRoutes(client: SanityClient): Promise<string[]> {
 async function queryAllRoutes(client: SanityClient): Promise<StaleRoute[]> {
   const slugs = await _queryAllRoutes(client)
 
-  return ['/', ...slugs.map((slug) => `/blog/${slug}` as StaleRoute)]
+  return [
+    '/',
+    '/blog',
+    '/events',
+    '/resources',
+    ...slugs.map((slug) => `/blog/${slug}` as StaleRoute),
+  ]
 }
 
 async function mergeWithMoreStories(
@@ -158,7 +166,7 @@ async function queryStaleAuthorRoutes(
 
   if (slugs.length > 0) {
     slugs = await mergeWithMoreStories(client, slugs)
-    return ['/', ...slugs.map((slug) => `/blog/${slug}`)]
+    return ['/', '/blog', '/events', ...slugs.map((slug) => `/blog/${slug}`)]
   }
 
   return []
@@ -175,7 +183,7 @@ async function queryStalePostRoutes(
 
   slugs = await mergeWithMoreStories(client, slugs)
 
-  return ['/', ...slugs.map((slug) => `/blog/${slug}`)]
+  return ['/', '/blog', ...slugs.map((slug) => `/blog/${slug}`)]
 }
 
 async function queryStaleEventRoutes(
@@ -187,5 +195,12 @@ async function queryStaleEventRoutes(
     { id },
   )
 
-  return ['/', ...slugs.map((slug) => `/events/${slug}`)]
+  return ['/', '/events', ...slugs.map((slug) => `/events/${slug}`)]
+}
+
+async function queryStaleResourceRoutes(
+  client: SanityClient,
+  id: string,
+): Promise<StaleRoute[]> {
+  return ['/', '/resources']
 }
