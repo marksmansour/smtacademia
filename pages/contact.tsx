@@ -1,12 +1,27 @@
+import ContactSection from 'components/ContactSection'
 import Layout from 'components/Layout'
 import PageHeader from 'components/PageHeader'
-import ContactForm from 'components/ContactForm'
+import { readToken } from 'lib/sanity.api'
+import { GetStaticProps } from 'next'
+import type { SharedPageProps } from 'pages/_app'
 
-export default function Page() {
+export default function Page(props: SharedPageProps) {
+  const { draftMode } = props
+
   return (
-    <Layout preview={false}>
+    <Layout preview={draftMode}>
       <PageHeader title="Contact Us" />
-      <ContactForm />
+      <ContactSection />
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps<SharedPageProps> = async (ctx) => {
+  const { draftMode = false } = ctx
+  return {
+    props: {
+      draftMode,
+      token: draftMode ? readToken : '',
+    },
+  }
 }
