@@ -1,6 +1,31 @@
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+
+type NavLink = {
+  title: string
+  href?: string
+  dropdown?: boolean
+  sublinks?: NavLink[]
+  button?: boolean
+}
+
+export const links: NavLink[] = [
+  { title: 'Home', href: '/' },
+  { title: 'About', href: '/about' },
+  {
+    title: 'Programs',
+    dropdown: true,
+    sublinks: [
+      { title: 'Blog', href: '/blog' },
+      { title: 'Events', href: '/events' },
+      { title: 'Resources', href: '/resources' },
+    ],
+  },
+  { title: 'Contact', href: '/contact' },
+  { title: 'Donate', href: '/donate', button: true },
+]
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -49,74 +74,65 @@ export default function Navbar() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-6 items-center">
-          <Link
-            href="/"
-            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
-          >
-            About
-          </Link>
-          <div className="relative">
-            <button
-              type="button"
-              className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
-              aria-expanded={programsOpen}
-              onClick={() => setProgramsOpen(!programsOpen)}
-            >
-              Programs
-              <svg
-                className="h-5 w-5 flex-none text-black"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-            {programsOpen && (
-              <div className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-stone-50 p-2 shadow-lg ring-1 ring-gray-900/5">
-                <Link
-                  href="/blog"
-                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+          {links.map((link, index) => (
+            <React.Fragment key={index}>
+              {link.dropdown ? (
+                <div
+                  className="relative"
+                  onClick={() => setProgramsOpen(!programsOpen)}
                 >
-                  Blog
-                </Link>
+                  <button
+                    type="button"
+                    className="flex items-center gap-x-1 rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                    aria-expanded={programsOpen}
+                  >
+                    {link.title}
+                    <svg
+                      className={`h-5 w-5 flex-none text-black ${
+                        programsOpen ? 'transform rotate-180' : ''
+                      }`}
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  {programsOpen && (
+                    <div className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-stone-50 p-2 shadow-lg ring-1 ring-gray-900/5">
+                      {link.sublinks?.map((sublink, subIndex) => (
+                        <Link
+                          key={subIndex}
+                          href={sublink.href}
+                          className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                        >
+                          {sublink.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : link.button ? (
                 <Link
-                  href="/events"
-                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                  href={link.href}
+                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-white bg-sky-600 hover:bg-sky-700"
                 >
-                  Events
+                  {link.title}
                 </Link>
+              ) : (
                 <Link
-                  href="/resources"
-                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                  href={link.href}
+                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
                 >
-                  Resources
+                  {link.title}
                 </Link>
-              </div>
-            )}
-          </div>
-          <Link
-            href="/donate"
-            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
-          >
-            Donate
-          </Link>
-          <Link
-            href="/contact"
-            className="text-sm font-semibold leading-6 text-black hover:underline underline-offset-2 p-2"
-          >
-            Contact
-          </Link>
+              )}
+            </React.Fragment>
+          ))}
         </div>
       </nav>
       {mobileOpen && (
@@ -149,75 +165,62 @@ export default function Navbar() {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
-                  <Link
-                    href="/"
-                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    href="/about"
-                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    About
-                  </Link>
-                  <div className="-mx-3">
-                    <button
-                      type="button"
-                      className="flex w-full items-center justify-between rounded-md py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                      aria-controls="disclosure-2"
-                      aria-expanded="false"
-                      onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
-                    >
-                      Programs
-                      <svg
-                        className="h-5 w-5 flex-none"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                    {mobileProgramsOpen && (
-                      <div className="mt-2 space-y-2" id="disclosure-2">
+                  {links.map((link, index) => (
+                    <React.Fragment key={index}>
+                      {link.dropdown ? (
+                        <div className="-mx-3">
+                          <button
+                            type="button"
+                            className="flex w-full items-center justify-between rounded-md py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                            aria-controls={`disclosure-${index}`}
+                            aria-expanded={mobileProgramsOpen}
+                            onClick={() =>
+                              setMobileProgramsOpen(!mobileProgramsOpen)
+                            }
+                          >
+                            {link.title}
+                            <svg
+                              className={`h-5 w-5 flex-none ${
+                                mobileProgramsOpen ? 'transform rotate-180' : ''
+                              }`}
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                          {mobileProgramsOpen && (
+                            <div
+                              className="mt-2 space-y-2"
+                              id={`disclosure-${index}`}
+                            >
+                              {link.sublinks?.map((sublink, subIndex) => (
+                                <Link
+                                  key={subIndex}
+                                  href={sublink.href}
+                                  className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                >
+                                  {sublink.title}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
                         <Link
-                          href="/blog"
-                          className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          href={link.href}
+                          className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                         >
-                          Blog
+                          {link.title}
                         </Link>
-                        <Link
-                          href="/events"
-                          className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                        >
-                          Events
-                        </Link>
-                        <Link
-                          href="/resources"
-                          className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                        >
-                          Resources
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                  <Link
-                    href="/donate"
-                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Donate
-                  </Link>
-                  <Link
-                    href="/donate"
-                    className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Contact
-                  </Link>
+                      )}
+                    </React.Fragment>
+                  ))}
                 </div>
               </div>
             </div>

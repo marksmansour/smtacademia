@@ -1,6 +1,14 @@
 import Link from 'next/link'
+import { links } from './Navbar'
 
 export default function Footer() {
+  const navLinks = links.flatMap((link) =>
+    link.dropdown
+      ? link.sublinks?.map((sub) => ({ href: sub.href, title: sub.title })) ||
+        []
+      : [{ href: link.href, title: link.title }],
+  )
+
   return (
     <footer className="bg-stone-50">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 pt-20 sm:pt-24 lg:px-8 pb-10 sm:pb-12">
@@ -8,62 +16,16 @@ export default function Footer() {
           className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
           aria-label="Footer"
         >
-          <div className="pb-6">
-            <Link
-              href="/"
-              className="text-sm leading-6 text-black hover:underline underline-offset-2"
-            >
-              Home
-            </Link>
-          </div>
-          <div className="pb-6">
-            <Link
-              href="/about"
-              className="text-sm leading-6 text-black hover:underline underline-offset-2"
-            >
-              About
-            </Link>
-          </div>
-          <div className="pb-6">
-            <Link
-              href="/blog"
-              className="text-sm leading-6 text-black hover:underline underline-offset-2"
-            >
-              Blog
-            </Link>
-          </div>
-          <div className="pb-6">
-            <Link
-              href="/events"
-              className="text-sm leading-6 text-black hover:underline underline-offset-2"
-            >
-              Events
-            </Link>
-          </div>
-          <div className="pb-6">
-            <Link
-              href="/resources"
-              className="text-sm leading-6 text-black hover:underline underline-offset-2"
-            >
-              Resources
-            </Link>
-          </div>
-          <div className="pb-6">
-            <Link
-              href="/donate"
-              className="text-sm leading-6 text-black hover:underline underline-offset-2"
-            >
-              Donate
-            </Link>
-          </div>
-          <div className="pb-6">
-            <Link
-              href="/donate"
-              className="text-sm leading-6 text-black hover:underline underline-offset-2"
-            >
-              Contact
-            </Link>
-          </div>
+          {navLinks.map((link) => (
+            <div className="pb-6">
+              <Link
+                href={link.href}
+                className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+              >
+                {link.title}
+              </Link>
+            </div>
+          ))}
         </nav>
         <p className="mt-10 text-center text-xs leading-5 text-gray-900">
           &copy; {new Date().getFullYear()} All rights reserved.{' '}
