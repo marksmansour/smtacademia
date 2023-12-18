@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="pb-6">
               <Link
                 href={link.href}
-                className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                className="block rounded-sm px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
               >
                 {link.title}
               </Link>
