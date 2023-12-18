@@ -67,7 +67,13 @@ export default async function revalidate(
   }
 }
 
-type StaleRoute = '/' | `/blog/${string}` | `/events/${string}`
+type StaleRoute =
+  | '/'
+  | '/blog'
+  | '/events'
+  | '/resources'
+  | `/blog/${string}`
+  | `/events/${string}`
 
 async function queryStaleRoutes(
   body: Pick<
@@ -81,7 +87,7 @@ async function queryStaleRoutes(
   if (body._type === 'post') {
     const exists = await client.fetch(groq`*[_id == $id][0]`, { id: body._id })
     if (!exists) {
-      let staleRoutes: StaleRoute[] = ['/']
+      let staleRoutes: StaleRoute[] = ['/', '/blog', '/events', '/resources']
       if ((body.slug as any)?.current) {
         staleRoutes.push(`/blog/${(body.slug as any).current}`)
       }
