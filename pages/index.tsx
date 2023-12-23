@@ -29,15 +29,21 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const [settings, page] = await Promise.all([
-    getSettings(client),
+  const [page, settings] = await Promise.all([
     getPageByTitle(client, 'Home'),
+    getSettings(client),
   ])
+
+  if (!page) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {
-      settings,
       page,
+      settings,
       draftMode,
       token: draftMode ? readToken : '',
     },

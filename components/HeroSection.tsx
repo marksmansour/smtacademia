@@ -1,4 +1,3 @@
-import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 
 export default function HeroSection({ title, description, image }) {
@@ -28,7 +27,7 @@ export default function HeroSection({ title, description, image }) {
               {title}
             </h1>
             <h4 className="mt-6 text-lg leading-8 text-gray-50">
-              <PortableText value={description} />
+              {description}
             </h4>
           </div>
         </div>

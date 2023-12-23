@@ -12,7 +12,9 @@ export default function PreviewIndexPage(props: IndexPageProps) {
     props.settings,
     settingsQuery,
   )
-  const [page, loadingPage] = useLiveQuery<Page>(props.page, pageQuery)
+  const [page, loadingPage] = useLiveQuery<Page>(props.page, pageQuery, {
+    title: 'Home',
+  })
 
   return (
     <IndexPage

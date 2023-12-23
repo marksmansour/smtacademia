@@ -41,6 +41,29 @@ export const locate: DocumentLocationResolver = (params, context) => {
     )
   }
 
+  if (params.type === 'page') {
+    const doc$ = context.documentStore.listenQuery(
+      `*[_id == $id && defined(title)][0]{title}`,
+      params,
+      { perspective: 'previewDrafts' },
+    ) as Observable<{
+      title: string | null
+    } | null>
+
+    return doc$.pipe(
+      map((doc) => {
+        return {
+          locations: [
+            {
+              title: doc.title || 'Untitled',
+              href: `/${doc.title !== 'Home' ? doc.title.toLowerCase() : ''}`,
+            },
+          ],
+        }
+      }),
+    )
+  }
+
   if (params.type === 'author') {
     // Fetch all posts that reference the viewed author, if the post has a slug defined
     const doc$ = context.documentStore.listenQuery(

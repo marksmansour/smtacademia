@@ -202,6 +202,6 @@ export interface Resource {
 
 export interface Page {
   _id: string
-  title: string
-  pageBuilder: any[]
+  title?: string
+  pageBuilder?: any[]
 }

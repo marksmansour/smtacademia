@@ -1,6 +1,6 @@
 import Layout from 'components/Layout'
 import IndexPageHead from 'components/IndexPageHead'
-import type { Event, Page, Post, Settings } from 'lib/sanity.queries'
+import type { Page, Settings } from 'lib/sanity.queries'
 import PageComponents from './PageComponents'
 
 export interface IndexPageProps {

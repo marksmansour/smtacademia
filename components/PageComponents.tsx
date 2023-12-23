@@ -39,7 +39,7 @@ export default function PageComponents({ sections }: any) {
               <HeroSection
                 key={`${section._type}-${index}`}
                 title={section.heading}
-                description={''}
+                description={section.description}
                 image={section.image}
               />
             )
