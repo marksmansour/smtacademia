@@ -1,15 +1,32 @@
-import BlogContainer from './BlogContainer'
-import { PortableText } from '@portabletext/react'
-import styles from './PostBody.module.css'
+/**
+ * This component uses Portable Text to render a post body.
+ *
+ * You can learn more about Portable Text on:
+ * https://www.sanity.io/docs/block-content
+ * https://github.com/portabletext/react-portabletext
+ * https://portabletext.org/
+ *
+ */
+import {
+  PortableText,
+  type PortableTextReactComponents,
+} from '@portabletext/react'
 
-export default function AboutSection({ excerpt }: { excerpt: any }) {
+import styles from './PostBody.module.css'
+import { SanityImage } from './SanityImage'
+
+const myPortableTextComponents: Partial<PortableTextReactComponents> = {
+  types: {
+    image: ({ value }) => {
+      return <SanityImage {...value} />
+    },
+  },
+}
+
+export default function AboutSection({ excerpt }) {
   return (
-    <div className="my-16 sm:my-20">
-      <BlogContainer>
-        <div className={styles.portableText}>
-          <PortableText value={excerpt} />
-        </div>
-      </BlogContainer>
+    <div className={`mx-auto max-w-4xl my-20 ${styles.portableText}`}>
+      <PortableText value={excerpt} components={myPortableTextComponents} />
     </div>
   )
 }

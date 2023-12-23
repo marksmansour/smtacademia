@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 
-export default function HeroSection({ title, description }) {
+export default function HeroSection({ title, description, image }) {
   return (
     <div className="bg-sky-900">
       <div className="relative isolate overflow-hidden pt-14">

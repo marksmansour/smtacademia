@@ -1,36 +1,29 @@
-import AboutSection from 'components/AboutSection'
-import BlogSection from 'components/BlogSection'
-import ContactSection from 'components/ContactSection'
-import CtaSection from 'components/CtaSection'
-import DonateSection from 'components/DonateSection'
-import EventSection from 'components/EventSection'
-import HeroSection from 'components/HeroSection'
 import Layout from 'components/Layout'
 import IndexPageHead from 'components/IndexPageHead'
-import type { Event, Post, Settings } from 'lib/sanity.queries'
+import type { Event, Page, Post, Settings } from 'lib/sanity.queries'
+import PageComponents from './PageComponents'
 
 export interface IndexPageProps {
   preview?: boolean
   loading?: boolean
-  posts: Post[]
-  events: Event[]
   settings: Settings
+  page: Page
 }
 
 export default function IndexPage(props: IndexPageProps) {
-  const { preview, loading, posts, events, settings } = props
-  const { title, description, excerpt } = settings
+  const { preview, loading, settings, page } = props
+  const { title, description } = settings
 
   return (
     <>
-      <IndexPageHead settings={settings} />
+      <IndexPageHead
+        settings={{
+          title,
+          description,
+        }}
+      />
       <Layout preview={preview} loading={loading}>
-        <HeroSection title={title} description={description} />
-        <BlogSection posts={posts} title="Featured Posts" />
-        <CtaSection />
-        <AboutSection excerpt={excerpt} />
-        <DonateSection />
-        <EventSection events={events} title="Our Latest Events" />
+        {page?.pageBuilder && <PageComponents sections={page.pageBuilder} />}
       </Layout>
     </>
   )

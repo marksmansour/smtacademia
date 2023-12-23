@@ -17,7 +17,7 @@ export default function Footer() {
           aria-label="Footer"
         >
           {navLinks.map((link) => (
-            <div className="pb-6">
+            <div className="pb-6" key={link.href}>
               <Link
                 href={link.href}
                 className="block rounded-sm px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
