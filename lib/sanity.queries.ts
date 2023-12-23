@@ -1,5 +1,71 @@
 import { groq } from 'next-sanity'
 
+export const pageQuery = groq`
+*[_type == "page" && title == $title][0]{
+  title,
+  pageBuilder[]{
+    _type == "cta" => {
+      _type,
+      title,
+      text,
+      primary,
+      primaryText,
+      secondary,
+      secondaryText,
+      style
+    },
+    _type == "donate" => {
+      _type,
+      text
+    },
+    _type == "eventList" => {
+      _type,
+      heading,
+      events[]->{
+        _id,
+        title,
+        description,
+        "author": author->{name, picture},
+        date,
+        location,
+        url,
+        repeat,
+        "slug": slug.current,
+        status
+      }
+    },
+    _type == 'form' => {
+      _type,
+      form
+    },
+    _type == "hero" => {
+      _type,
+      heading,
+      description,
+      image
+    },
+    _type == "postList" => {
+      _type,
+      heading,
+      posts[]->{
+        _id,
+        title,
+        date,
+        _updatedAt,
+        excerpt,
+        coverImage,
+        "slug": slug.current,
+        "author": author->{name, picture},
+      }
+    },
+    _type == "richText" => {
+      _type,
+      text
+    },
+  },
+}
+`
+
 const postFields = groq`
   _id,
   title,
@@ -106,9 +172,9 @@ export interface Post {
 
 export interface Settings {
   title?: string
-  description?: any[],
-  excerpt?: any,
-  about?: any,
+  description?: any[]
+  excerpt?: any
+  about?: any
   ogImage?: {
     title?: string
   }
@@ -132,4 +198,10 @@ export interface Resource {
   description?: string
   file?: string
   url?: string
+}
+
+export interface Page {
+  _id: string
+  title: string
+  pageBuilder: any[]
 }

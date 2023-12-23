@@ -1,5 +1,12 @@
 import { defineField, defineType } from 'sanity'
 
+import { links } from 'components/Navbar'
+const navLinks = links.flatMap((link) =>
+  link.dropdown
+    ? link.sublinks?.map((sub) => ({ value: sub.href, title: sub.title })) || []
+    : [{ value: link.href, title: link.title }],
+)
+
 export const ctaType = defineType({
   name: 'cta',
   type: 'object',
@@ -14,16 +21,32 @@ export const ctaType = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'primaryText',
+      title: 'Primary Link Text',
+      type: 'string',
+    }),
+    defineField({
       name: 'primary',
       title: 'Primary Link',
-      type: 'reference',
-      to: [{ type: 'page' }],
+      type: 'string',
+      options: {
+        list: navLinks,
+        layout: 'radio',
+      },
+    }),
+    defineField({
+      name: 'secondaryText',
+      title: 'Secondary Link Text',
+      type: 'string',
     }),
     defineField({
       name: 'secondary',
       title: 'Secondary Link',
-      type: 'reference',
-      to: [{ type: 'page' }],
+      type: 'string',
+      options: {
+        list: navLinks,
+        layout: 'radio',
+      },
     }),
     defineField({
       name: 'style',

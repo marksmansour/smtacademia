@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const richTextType = defineType({
   name: 'richText',
@@ -9,27 +9,9 @@ export const richTextType = defineType({
       name: 'text',
       type: 'array',
       of: [
-        { type: 'block' },
-        {
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-          fields: [
-            {
-              name: 'caption',
-              type: 'string',
-              title: 'Image caption',
-              description: 'Caption displayed below the image.',
-            },
-            {
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative text',
-              description: 'Important for SEO and accessiblity.',
-            },
-          ],
-        },
+        defineArrayMember({
+          type: 'block',
+        }),
       ],
       validation: (rule) => rule.required(),
     }),

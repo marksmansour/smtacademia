@@ -20,6 +20,8 @@ import {
   type Settings,
   settingsQuery,
   eventsQuery,
+  type Page,
+  pageQuery,
 } from 'lib/sanity.queries'
 import { createClient, type SanityClient } from 'next-sanity'
 
@@ -98,4 +100,11 @@ export async function getAllResources(
   client: SanityClient,
 ): Promise<Resource[]> {
   return (await client.fetch(resourcesQuery)) || []
+}
+
+export async function getPageByTitle(
+  client: SanityClient,
+  title: string,
+): Promise<Page> {
+  return (await client.fetch(pageQuery, { title })) || ({} as any)
 }

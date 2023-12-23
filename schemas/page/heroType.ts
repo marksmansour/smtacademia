@@ -10,7 +10,7 @@ export const heroType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'tagline',
+      name: 'description',
       type: 'string',
     }),
     defineField({
