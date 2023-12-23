@@ -20,6 +20,14 @@ import eventsType from 'schemas/event'
 import postType from 'schemas/post'
 import settingsType from 'schemas/settings'
 import resourcesType from 'schemas/resource'
+import pageType from 'schemas/page'
+import { ctaType } from 'schemas/page/ctaType'
+import { donateType } from 'schemas/page/donateType'
+import { eventListType } from 'schemas/page/eventListType'
+import { formType } from 'schemas/page/formType'
+import { heroType } from 'schemas/page/heroType'
+import { postListType } from 'schemas/page/postListType'
+import { richTextType } from 'schemas/page/richTextType'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
@@ -31,7 +39,20 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [postType, eventsType, resourcesType, settingsType],
+    types: [
+      settingsType,
+      pageType,
+      postType,
+      eventsType,
+      resourcesType,
+      ctaType,
+      donateType,
+      eventListType,
+      formType,
+      heroType,
+      postListType,
+      richTextType,
+    ],
   },
   plugins: [
     deskTool({
