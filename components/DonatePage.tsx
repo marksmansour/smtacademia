@@ -4,14 +4,14 @@ import type { Page, Settings } from 'lib/sanity.queries'
 import PageComponents from './PageComponents'
 import PageHeader from './PageHeader'
 
-export interface AboutPageProps {
+export interface DonatePageProps {
   preview?: boolean
   loading?: boolean
   settings: Settings
   page: Page
 }
 
-export default function AboutPage(props: AboutPageProps) {
+export default function DonatePage(props: DonatePageProps) {
   const { preview, loading, settings, page } = props
   const { title, description } = settings
 
@@ -24,7 +24,7 @@ export default function AboutPage(props: AboutPageProps) {
         }}
       />
       <Layout preview={preview} loading={loading}>
-        {page.title !== 'Home' && <PageHeader title={page.title} />}
+        <PageHeader title={page.title} />
         {page?.pageBuilder && <PageComponents sections={page.pageBuilder} />}
       </Layout>
     </>

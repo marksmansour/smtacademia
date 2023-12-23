@@ -3,6 +3,8 @@ import CtaSection from './CtaSection'
 import BlogSection from './BlogSection'
 import EventSection from './EventSection'
 import AboutSection from './AboutSection'
+import DonateSection from './DonateSection'
+import ContactSection from './ContactSection'
 
 export default function PageComponents({ sections }: any) {
   return (
@@ -23,7 +25,7 @@ export default function PageComponents({ sections }: any) {
               />
             )
           case 'donate':
-            return <></>
+            return <DonateSection text={section.text} />
           case 'eventList':
             return (
               <EventSection
@@ -33,7 +35,7 @@ export default function PageComponents({ sections }: any) {
               />
             )
           case 'form':
-            return <></>
+            return <ContactSection />
           case 'hero':
             return (
               <HeroSection
@@ -59,7 +61,7 @@ export default function PageComponents({ sections }: any) {
               />
             )
           default:
-            return <></>
+            return <div key={`undefined-${index}`}></div>
         }
       })}
     </div>

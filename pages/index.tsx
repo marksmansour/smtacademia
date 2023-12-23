@@ -2,7 +2,7 @@ import IndexPage from 'components/IndexPage'
 import PreviewIndexPage from 'components/PreviewIndexPage'
 import { readToken } from 'lib/sanity.api'
 import { getClient, getPageByTitle, getSettings } from 'lib/sanity.client'
-import { Event, Page, Post, Settings } from 'lib/sanity.queries'
+import { Page, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import type { SharedPageProps } from 'pages/_app'
 
@@ -33,12 +33,6 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
     getPageByTitle(client, 'Home'),
     getSettings(client),
   ])
-
-  if (!page) {
-    return {
-      notFound: true,
-    }
-  }
 
   return {
     props: {

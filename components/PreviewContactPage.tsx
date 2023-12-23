@@ -1,4 +1,4 @@
-import AboutPage, { type AboutPageProps } from 'components/AboutPage'
+import ContactPage, { type ContactPageProps } from 'components/ContactPage'
 import {
   type Settings,
   settingsQuery,
@@ -7,17 +7,17 @@ import {
 } from 'lib/sanity.queries'
 import { useLiveQuery } from 'next-sanity/preview'
 
-export default function PreviewAboutPage(props: AboutPageProps) {
+export default function PreviewContactPage(props: ContactPageProps) {
   const [settings, loadingSettings] = useLiveQuery<Settings>(
     props.settings,
     settingsQuery,
   )
   const [page, loadingPage] = useLiveQuery<Page>(props.page, pageQuery, {
-    title: 'About',
+    title: 'Contact',
   })
 
   return (
-    <AboutPage
+    <ContactPage
       preview
       loading={loadingPage || loadingSettings}
       settings={settings || {}}

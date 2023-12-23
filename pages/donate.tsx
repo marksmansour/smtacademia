@@ -1,26 +1,43 @@
-import Layout from 'components/Layout'
-import PageHeader from 'components/PageHeader'
+import DonatePage from 'components/DonatePage'
+import PreviewDonatePage from 'components/PreviewDonatePage'
 import { readToken } from 'lib/sanity.api'
+import { getClient, getPageByTitle, getSettings } from 'lib/sanity.client'
+import { Page, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import type { SharedPageProps } from 'pages/_app'
 
-export default function Page(props: SharedPageProps) {
-  const { draftMode } = props
-
-  return (
-    <Layout preview={draftMode}>
-      <PageHeader title="Donate" />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20">
-        https://www.funraise.org/
-      </div>
-    </Layout>
-  )
+interface PageProps extends SharedPageProps {
+  settings: Settings
+  page: Page
 }
 
-export const getStaticProps: GetStaticProps<SharedPageProps> = async (ctx) => {
+interface Query {
+  [key: string]: string
+}
+
+export default function Page(props: PageProps) {
+  const { settings, draftMode, page } = props
+
+  if (draftMode) {
+    return <PreviewDonatePage settings={settings} page={page} />
+  }
+
+  return <DonatePage settings={settings} page={page} />
+}
+
+export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false } = ctx
+  const client = getClient(draftMode ? { token: readToken } : undefined)
+
+  const [page, settings] = await Promise.all([
+    getPageByTitle(client, 'Donate'),
+    getSettings(client),
+  ])
+
   return {
     props: {
+      page,
+      settings,
       draftMode,
       token: draftMode ? readToken : '',
     },
