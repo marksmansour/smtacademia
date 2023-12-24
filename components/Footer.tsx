@@ -2,12 +2,15 @@ import Link from 'next/link'
 import { links } from './Navbar'
 
 export default function Footer() {
-  const navLinks = links.flatMap((link) =>
-    link.dropdown
-      ? link.sublinks?.map((sub) => ({ href: sub.href, title: sub.title })) ||
-        []
-      : [{ href: link.href, title: link.title }],
-  )
+  const navLinks = [
+    ...links.flatMap((link) =>
+      link.dropdown
+        ? link.sublinks?.map((sub) => ({ href: sub.href, title: sub.title })) ||
+          []
+        : [{ href: link.href, title: link.title }],
+    ),
+    { href: '/studio', title: 'Log In' },
+  ]
 
   return (
     <footer>
@@ -20,7 +23,7 @@ export default function Footer() {
             <div className="pb-6" key={link.href}>
               <Link
                 href={link.href}
-                className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                className="block rounded-md px-3 py-2 text-sm font-normal leading-6 text-gray-900 hover:bg-stone-50"
               >
                 {link.title}
               </Link>

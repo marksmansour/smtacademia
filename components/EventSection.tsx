@@ -21,7 +21,7 @@ export default function EventSection({
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {title && <SectionHeader title={title} subtitle={subtitle} />}
         <div className="mx-auto max-w-2xl">
-          <div className="mt-10 space-y-16">
+          <div className="mt-8 space-y-16">
             {events.map((e) => (
               <EventPreview
                 key={e._id}

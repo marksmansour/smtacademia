@@ -15,11 +15,11 @@ export default function Layout({
   return (
     <>
       <AlertBanner preview={preview} loading={loading} />
-      <BlogContainer className="flex flex-col min-h-screen bg-white">
+      <div className="flex flex-col min-h-screen bg-white">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
-      </BlogContainer>
+      </div>
     </>
   )
 }

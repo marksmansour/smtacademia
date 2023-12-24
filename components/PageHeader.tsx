@@ -8,8 +8,8 @@ export default function PageHeader(
   const { title, coverImage } = props
 
   return (
-    <div className="bg-gradient-to-br from-sky-900 to-sky-700 rounded-md">
-      <div className="relative isolate overflow-hidden rounded-md">
+    <div className="bg-gradient-to-br from-sky-900 to-sky-700">
+      <div className="relative isolate overflow-hidden">
         {coverImage && (
           <>
             <Image
@@ -19,11 +19,11 @@ export default function PageHeader(
               height={1080}
               className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-stone-900 -z-10 opacity-50" />
+            <div className="absolute inset-0 bg-stone-900 -z-10 opacity-25" />
           </>
         )}
         <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-24">
-          <div className="text-center">
+          <div className="text-center header">
             <h1 className="text-5xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
             </h1>

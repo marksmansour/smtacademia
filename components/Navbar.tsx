@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <div>
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between py-8 px-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between py-8 px-6"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -44,8 +44,8 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Learning & Growing Academy"
-              width={50}
-              height={50}
+              width={64}
+              height={64}
             />
           </Link>
         </div>
@@ -82,7 +82,7 @@ export default function Navbar() {
                 >
                   <button
                     type="button"
-                    className="flex items-center gap-x-1 rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                    className="flex items-center gap-x-1 rounded-md px-3 py-2 text-sm font-normal leading-6 text-gray-900 hover:bg-stone-50"
                     aria-expanded={programsOpen}
                   >
                     {link.title}
@@ -102,12 +102,12 @@ export default function Navbar() {
                     </svg>
                   </button>
                   {programsOpen && (
-                    <div className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-md bg-stone-50 p-2 shadow-lg ring-1 ring-gray-900/5">
+                    <div className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-md bg-white p-2 shadow-lg ring-1 ring-gray-900/5">
                       {link.sublinks?.map((sublink, subIndex) => (
                         <Link
                           key={subIndex}
                           href={sublink.href}
-                          className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                          className="block rounded-md px-3 py-2 text-sm font-normal leading-6 text-gray-900 hover:bg-stone-50"
                         >
                           {sublink.title}
                         </Link>
@@ -118,14 +118,14 @@ export default function Navbar() {
               ) : link.button ? (
                 <Link
                   href={link.href}
-                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-white bg-sky-600 hover:bg-sky-700"
+                  className="block rounded-md px-3 py-2 text-sm font-normal leading-6 text-white bg-sky-600 hover:bg-sky-700"
                 >
                   {link.title}
                 </Link>
               ) : (
                 <Link
                   href={link.href}
-                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                  className="block rounded-md px-3 py-2 text-sm font-normal leading-6 text-gray-900 hover:bg-stone-50"
                 >
                   {link.title}
                 </Link>
@@ -137,7 +137,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden" role="dialog" aria-modal="true">
           <div className="fixed inset-0 z-10"></div>
-          <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-stone-50 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-end">
               <button
                 type="button"
@@ -170,7 +170,7 @@ export default function Navbar() {
                         <div className="-mx-3">
                           <button
                             type="button"
-                            className="flex w-full items-center justify-between rounded-md px-3 py-2 pl-3 pr-3.5 text-base font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                            className="flex w-full items-center justify-between rounded-md px-3 py-2 pl-3 pr-3.5 text-base font-normal leading-6 text-gray-900 hover:bg-stone-50"
                             aria-controls={`disclosure-${index}`}
                             aria-expanded={mobileProgramsOpen}
                             onClick={() =>
@@ -202,7 +202,7 @@ export default function Navbar() {
                                 <Link
                                   key={subIndex}
                                   href={sublink.href}
-                                  className="block rounded-md py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-stone-100"
+                                  className="block rounded-md py-2 pl-6 pr-3 text-sm font-normal leading-7 text-gray-900 hover:bg-stone-50"
                                 >
                                   {sublink.title}
                                 </Link>
@@ -213,7 +213,7 @@ export default function Navbar() {
                       ) : (
                         <Link
                           href={link.href}
-                          className="-mx-3 block rounded-md px-3 py-2 text-base font-semibold leading-7text-gray-900 hover:bg-stone-100"
+                          className="-mx-3 block rounded-md px-3 py-2 text-base font-normal leading-7text-gray-900 hover:bg-stone-50"
                         >
                           {link.title}
                         </Link>

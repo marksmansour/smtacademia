@@ -25,7 +25,7 @@ const myPortableTextComponents: Partial<PortableTextReactComponents> = {
 
 export default function AboutSection({ excerpt }) {
   return (
-    <div className={`mx-auto max-w-4xl my-20 ${styles.portableText}`}>
+    <div className={`mx-auto max-w-3xl my-20 ${styles.portableText}`}>
       <PortableText value={excerpt} components={myPortableTextComponents} />
     </div>
   )
