@@ -42,7 +42,9 @@ export default function PostPreview({
         <div className="relative mt-8 flex items-center gap-x-4">
           {author && <Avatar name={author.name} picture={author.picture} />}
         </div>
-        <Link href={`/blog/${slug}`}>Read more &rarr;</Link>
+        <Link className="text-sm" href={`/blog/${slug}`}>
+          Read more &rarr;
+        </Link>
       </div>
     </article>
   )

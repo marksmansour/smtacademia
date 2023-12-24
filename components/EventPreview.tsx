@@ -29,6 +29,9 @@ export default function EventPreview({
       <div className="relative mt-8 flex items-center gap-x-4">
         {author && <Avatar name={author.name} picture={author.picture} />}
       </div>
+      <Link className="text-sm" href={`/events/${slug}`}>
+        View Event &rarr;
+      </Link>
     </article>
   )
 }
