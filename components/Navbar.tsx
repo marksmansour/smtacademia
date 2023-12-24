@@ -34,6 +34,7 @@ export default function Navbar() {
 
   return (
     <div>
+      <div className="bg-sky-700 w-full h-2" />
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between py-8 px-6"
         aria-label="Global"

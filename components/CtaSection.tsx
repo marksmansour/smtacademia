@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function CtaSection({
   title,
@@ -11,7 +12,14 @@ export default function CtaSection({
 }) {
   if (style == 'horizontal') {
     return (
-      <div className="bg-blue-50 rounded-md">
+      <div className="bg-blue-50 rounded-md relative isolate">
+        <Image
+          src="/tree-bottom.png"
+          alt="Learning & Growing Academy"
+          width={500}
+          height={500}
+          className="absolute right-16 bottom-0 top-0 -z-10 h-full w-1/2 object-cover opacity-5"
+        />
         <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:flex lg:items-center lg:justify-between lg:px-8 rounded-md">
           <div>
             <h2 className="text-3xl font-normal tracking-tight text-gray-900 sm:text-4xl">
@@ -45,7 +53,14 @@ export default function CtaSection({
   }
 
   return (
-    <div className="bg-blue-50 rounded-md">
+    <div className="bg-blue-50 rounded-md relative isolate">
+      <Image
+        src="/tree-top.png"
+        alt="Learning & Growing Academy"
+        width={500}
+        height={500}
+        className="absolute left-16 top-0 bottom-0 -z-10 h-full w-1/2 object-cover opacity-5"
+      />
       <div className="px-6 py-16 sm:px-6 sm:py-24 lg:px-8 rounded-md">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-normal tracking-tight text-gray-900 sm:text-4xl">

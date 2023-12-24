@@ -10,7 +10,7 @@ export default function PageHeader(
   return (
     <div className="bg-gradient-to-br from-sky-900 to-sky-700">
       <div className="relative isolate overflow-hidden">
-        {coverImage && (
+        {coverImage ? (
           <>
             <Image
               src={urlForImage(coverImage).height(1080).width(1920).url()}
@@ -21,6 +21,14 @@ export default function PageHeader(
             />
             <div className="absolute inset-0 bg-stone-900 -z-10 opacity-25" />
           </>
+        ) : (
+          <Image
+            src="/tree-top.png"
+            alt="Learning & Growing Academy"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25"
+          />
         )}
         <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-24">
           <div className="text-center header">

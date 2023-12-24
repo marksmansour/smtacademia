@@ -33,7 +33,7 @@ export default function HeroSection({ title, description, image }) {
           </video>
         )}
         <div className="mx-auto max-w-5xl py-28 sm:py-36 lg:py-40 px-6 lg:px-8">
-          <div className="text-center mx-auto w-1/2 header">
+          <div className="text-center mx-auto md:w-1/2 header">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
             </h1>
