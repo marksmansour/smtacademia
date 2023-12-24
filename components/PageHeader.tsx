@@ -22,7 +22,7 @@ export default function PageHeader(
             <div className="absolute inset-0 bg-stone-900 -z-10 opacity-50" />
           </>
         )}
-        <div className="mx-auto max-w-2xl py-20 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-24">
           <div className="text-center">
             <h1 className="text-5xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
