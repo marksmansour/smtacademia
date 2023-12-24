@@ -8,8 +8,8 @@ export default function PageHeader(
   const { title, coverImage } = props
 
   return (
-    <div className="bg-sky-900">
-      <div className="relative isolate overflow-hidden">
+    <div className="bg-gradient-to-br from-sky-900 to-sky-700 rounded-md">
+      <div className="relative isolate overflow-hidden rounded-md">
         {coverImage && (
           <>
             <Image

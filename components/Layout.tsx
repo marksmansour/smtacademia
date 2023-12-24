@@ -1,6 +1,7 @@
 import Footer from 'components/Footer'
 import AlertBanner from 'components/AlertBanner'
 import Navbar from './Navbar'
+import BlogContainer from './BlogContainer'
 
 export default function Layout({
   preview,
@@ -14,11 +15,11 @@ export default function Layout({
   return (
     <>
       <AlertBanner preview={preview} loading={loading} />
-      <div className="flex flex-col min-h-screen">
+      <BlogContainer className="flex flex-col min-h-screen bg-white">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
-      </div>
+      </BlogContainer>
     </>
   )
 }

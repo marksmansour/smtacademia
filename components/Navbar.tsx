@@ -33,10 +33,9 @@ export default function Navbar() {
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false)
 
   return (
-    <div className="bg-stone-50">
-      <div className="bg-sky-900 w-full h-4" />
+    <div>
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between py-6 px-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between py-8 px-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -53,7 +52,7 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-sm p-2.5 text-black"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-black"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             <span className="sr-only">Open main menu</span>
@@ -83,7 +82,7 @@ export default function Navbar() {
                 >
                   <button
                     type="button"
-                    className="flex items-center gap-x-1 rounded-sm px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                    className="flex items-center gap-x-1 rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
                     aria-expanded={programsOpen}
                   >
                     {link.title}
@@ -108,7 +107,7 @@ export default function Navbar() {
                         <Link
                           key={subIndex}
                           href={sublink.href}
-                          className="block rounded-sm px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                          className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
                         >
                           {sublink.title}
                         </Link>
@@ -119,14 +118,14 @@ export default function Navbar() {
               ) : link.button ? (
                 <Link
                   href={link.href}
-                  className="block rounded-sm px-3 py-2 text-sm font-semibold leading-6 text-white bg-sky-600 hover:bg-sky-700"
+                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-white bg-sky-600 hover:bg-sky-700"
                 >
                   {link.title}
                 </Link>
               ) : (
                 <Link
                   href={link.href}
-                  className="block rounded-sm px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                  className="block rounded-md px-3 py-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-stone-100"
                 >
                   {link.title}
                 </Link>
@@ -142,7 +141,7 @@ export default function Navbar() {
             <div className="flex items-center justify-end">
               <button
                 type="button"
-                className="-m-2.5 rounded-sm p-2.5 text-gray-700"
+                className="-m-2.5 rounded-md p-2.5 text-gray-700"
                 onClick={() => setMobileOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
@@ -171,7 +170,7 @@ export default function Navbar() {
                         <div className="-mx-3">
                           <button
                             type="button"
-                            className="flex w-full items-center justify-between rounded-sm px-3 py-2 pl-3 pr-3.5 text-base font-semibold leading-6 text-gray-900 hover:bg-stone-100"
+                            className="flex w-full items-center justify-between rounded-md px-3 py-2 pl-3 pr-3.5 text-base font-semibold leading-6 text-gray-900 hover:bg-stone-100"
                             aria-controls={`disclosure-${index}`}
                             aria-expanded={mobileProgramsOpen}
                             onClick={() =>
