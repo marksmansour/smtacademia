@@ -11,6 +11,13 @@ export const ctaType = defineType({
   name: 'cta',
   type: 'object',
   title: 'Call to Action',
+  preview: {
+    prepare() {
+      return {
+        title: 'Call to Action',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'title',

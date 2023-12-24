@@ -38,7 +38,6 @@ export default defineConfig({
   dataset,
   title,
   schema: {
-    // If you want more content types, you can add them to this array
     types: [
       settingsType,
       pageType,
@@ -59,6 +58,7 @@ export default defineConfig({
       structure: settingsStructure(settingsType),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode(),
+      title: 'Content',
     }),
     presentationTool({
       locate,
@@ -72,6 +72,7 @@ export default defineConfig({
           enable: DRAFT_MODE_ROUTE,
         },
       },
+      title: 'Live Preview',
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     settingsPlugin({ type: settingsType.name }),
@@ -79,6 +80,6 @@ export default defineConfig({
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({ defaultApiVersion: apiVersion }),
+    // visionTool({ defaultApiVersion: apiVersion }),
   ],
 })

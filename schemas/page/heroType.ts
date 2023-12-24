@@ -4,6 +4,13 @@ export const heroType = defineType({
   name: 'hero',
   type: 'object',
   title: 'Hero',
+  preview: {
+    prepare() {
+      return {
+        title: 'Hero',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'heading',

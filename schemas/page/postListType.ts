@@ -4,6 +4,13 @@ export const postListType = defineType({
   name: 'postList',
   type: 'object',
   title: 'Post List',
+  preview: {
+    prepare() {
+      return {
+        title: 'Blog Posts',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'heading',

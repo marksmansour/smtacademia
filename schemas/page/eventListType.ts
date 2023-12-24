@@ -4,6 +4,13 @@ export const eventListType = defineType({
   name: 'eventList',
   type: 'object',
   title: 'Event List',
+  preview: {
+    prepare() {
+      return {
+        title: 'Events',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'heading',

@@ -4,6 +4,13 @@ export const formType = defineType({
   name: 'form',
   type: 'object',
   title: 'Form',
+  preview: {
+    prepare() {
+      return {
+        title: 'Form',
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'form',
