@@ -7,7 +7,7 @@ export default defineType({
   icon: DesktopIcon,
   title: 'Page',
   fields: [
-    defineField({ name: 'title', type: 'string' }),
+    defineField({ name: 'title', type: 'string', readOnly: true }),
     defineField({
       name: 'pageBuilder',
       type: 'array',
