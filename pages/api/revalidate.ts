@@ -72,6 +72,9 @@ type StaleRoute =
   | '/blog'
   | '/events'
   | '/resources'
+  | '/about'
+  | '/contact'
+  | '/donate'
   | `/blog/${string}`
   | `/events/${string}`
 
@@ -117,6 +120,8 @@ async function queryStaleRoutes(
       return await queryStaleResourceRoutes(client, body._id)
     case 'settings':
       return await queryAllRoutes(client)
+    case 'page':
+      return await queryAllRoutes(client)
     default:
       throw new TypeError(`Unknown type: ${body._type}`)
   }
@@ -131,6 +136,9 @@ async function queryAllRoutes(client: SanityClient): Promise<StaleRoute[]> {
 
   return [
     '/',
+    '/about',
+    '/contact',
+    '/donate',
     '/blog',
     '/events',
     '/resources',
