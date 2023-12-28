@@ -9,6 +9,7 @@ import { DefaultDocumentNodeResolver } from 'sanity/desk'
 import { Iframe, IframeOptions } from 'sanity-plugin-iframe-pane'
 import authorType from 'schemas/author'
 import postType from 'schemas/post'
+import pageType from 'schemas/page'
 
 import AuthorAvatarPreviewPane from './AuthorAvatarPreviewPane'
 
@@ -24,6 +25,14 @@ const iframeOptions = {
           return (document as any)?.slug?.current
             ? `/blog/${(document as any).slug.current}`
             : new Error('Missing slug')
+        case 'page':
+          let title = (document as any)?.title?.toLowerCase()
+
+          if (title === 'home') {
+            return '/'
+          }
+
+          return title ? `/${title}` : new Error('Missing title')
         default:
           return new Error(`Unknown document type: ${document?._type}`)
       }
@@ -50,6 +59,12 @@ export const previewDocumentNode = (): DefaultDocumentNodeResolver => {
         ])
 
       case postType.name:
+        return S.document().views([
+          S.view.form(),
+          S.view.component(Iframe).options(iframeOptions).title('Preview'),
+        ])
+
+      case pageType.name:
         return S.document().views([
           S.view.form(),
           S.view.component(Iframe).options(iframeOptions).title('Preview'),
