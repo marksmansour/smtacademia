@@ -13,6 +13,8 @@ export default function EventSection({
   title?: string
   subtitle?: string
 }) {
+  if (!events) return null
+
   if (limit > 0) {
     events = events.slice(0, limit)
   }

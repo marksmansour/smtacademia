@@ -13,6 +13,8 @@ export default function BlogSection({
   title?: string
   subtitle?: string
 }) {
+  if (!posts) return null
+
   if (limit > 0) {
     posts = posts.slice(0, limit)
   }
